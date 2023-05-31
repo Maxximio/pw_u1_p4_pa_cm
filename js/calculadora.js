@@ -1,33 +1,93 @@
 
+function agregar(valor) {
+  document.getElementById('idLabelResultado').innerHTML += valor;
+}
+
+
 function parsear(id) {
-    var numero=parseInt(document.getElementById(id).value) ;
-    return numero
+  var numero = parseInt(document.getElementById(id).value);
+  return numero
+}
+
+function calcular() {
+  let cadena = document.getElementById('idLabelResultado').innerHTML
+
+  let numeros = [];
+  let operador = '+';
+  let numeroActual = '';
+  let resultado = 0;
+
+  for (let i = 0; i < cadena.length; i++) {
+    let caracter = cadena[i];
+
+    if (!isNaN(caracter) || caracter === '.') {
+      numeroActual += caracter;
+    } else {
+      let numero = parseFloat(numeroActual);
+      numeros.push(numero);
+      numeroActual = '';
+
+      if (operador === '+') {
+        resultado += numero;
+      } else if (operador === '-') {
+        resultado -= numero;
+      } else if (operador === 'x') {
+        resultado *= numero;
+      } else if (operador === '÷') {
+        resultado /= numero;
+      }
+
+      operador = caracter;
+    }
   }
 
-  function sumarNumeros() {
-    document.getElementById('idLabelResultado').innerHTML='Resultado :  ' + (parsear('idNum1')+parsear('idNum2'));
+  // Calcular la última operación
+  let ultimoNumero = parseFloat(numeroActual);
+  if (!isNaN(ultimoNumero)) {
+    numeros.push(ultimoNumero);
+
+    if (operador === '+') {
+      resultado += ultimoNumero;
+    } else if (operador === '-') {
+      resultado -= ultimoNumero;
+    } else if (operador === 'x') {
+      resultado *= ultimoNumero;
+    } else if (operador === '÷') {
+      resultado /= ultimoNumero;
+    }
   }
 
-  function restarNumeros() {
-    document.getElementById('idLabelResultado').innerHTML='Resultado :  ' + (parsear('idNum1')-parsear('idNum2'));
-  }
+  //return resultado;
+  document.getElementById('idLabelResultado').innerHTML = resultado;
+
+}
 
 
-  function multiplicarNumeros() {
-    document.getElementById('idLabelResultado').innerHTML='Resultado :  ' + (parsear('idNum1')*parsear('idNum2'));
-  }
 
-  function dividirNumeros() {
-    document.getElementById('idLabelResultado').innerHTML='Resultado :  ' + (parsear('idNum1')/parsear('idNum2'));
-  }
 
-  function eliminarElemento(){
-    document.getElementById('idEliminar').remove();
-    console.log(document.getElementById('idEliminar'))
-    console.log('Test')
-  }
+function sumarNumeros() {
+  document.getElementById('idLabelResultado').innerHTML = 'Resultado :  ' + (parsear('idNum1') + parsear('idNum2'));
+}
 
-  function insertarElemento(){
-    document.getElementById('elemento').innerHTML='<strong>Importante</strong>';
-  }
+function restarNumeros() {
+  document.getElementById('idLabelResultado').innerHTML = 'Resultado :  ' + (parsear('idNum1') - parsear('idNum2'));
+}
+
+
+function multiplicarNumeros() {
+  document.getElementById('idLabelResultado').innerHTML = 'Resultado :  ' + (parsear('idNum1') * parsear('idNum2'));
+}
+
+function dividirNumeros() {
+  document.getElementById('idLabelResultado').innerHTML = 'Resultado :  ' + (parsear('idNum1') / parsear('idNum2'));
+}
+
+
+
+
+function eliminarElemento() {
+  document.getElementById('idLabelResultado').innerHTML = '';
+}
+
+
 

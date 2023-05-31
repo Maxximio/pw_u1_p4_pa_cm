@@ -1,0 +1,41 @@
+.cabeza h1{
+    font-size: 60px;
+    text-align: center;
+    padding: 10px;
+}
+
+body{
+    text-align: center;
+    background-color: cadetblue;
+}
+
+.cuadroResultado{
+    margin: 20px;
+}
+.cuadroResultado label{ 
+    font-size: 40px;
+    border-style: inset;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-color: darkslategrey;
+    background-color: azure
+}
+
+.numeros button{
+    margin: 10px;
+    background-color: dimgray;
+    width: 40px;
+    height: 40px;
+    color: aliceblue;
+    font-size: x-large;
+}
+
+.limpieza{
+    margin-top: 20px;
+}
+.limpieza button{
+    background-color: khaki;
+    height: 40px;
+    width: 90;
+    font-size: x-large;
+}
